@@ -1,0 +1,10 @@
+auth.json
+*.log
+node_modules/
+*.dpapi
+screenshots/
+.plus-meter/
+edge-profile/
+.env
+.env.*
+*.zip

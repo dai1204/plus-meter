@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="session-token" content="__SESSION__">
+  <title>Plus Meter · 额度看板</title><link rel="stylesheet" href="/style.css">
+  <script src="/app.js" defer></script>
+</head>
+<body>
+  <main>
+    <header><div class="logo">◔</div><div><strong>Plus Meter</strong><span class="eyebrow">LOCAL USAGE MONITOR</span></div><span class="local">● 本地运行</span></header>
+    <div class="widget-controls"><span id="widget-plan" class="badge">CODEX 额度</span><button id="settings" class="quiet">账户设置</button></div>
+    <section class="intro"><p class="eyebrow">让额度一目了然</p><h1>知道还剩多少。<br><span>安心开始下一次工作。</span></h1><p>查看 ChatGPT 订阅中的 Codex 额度与重置时间。</p></section>
+    <section class="panel import-panel">
+      <div class="section-title"><h2>连接账户</h2><span id="plan" class="badge">等待导入</span></div>
+      <label id="drop" class="drop" for="file"><span class="file-icon">↥</span><strong>选择或拖入 auth.json</strong><span>支持 Codex 登录凭据 · 最多 128 KB</span><input type="file" id="file" accept=".json,application/json"></label>
+      <div class="options"><label>本地 HTTP 代理（可选）<input id="proxy" type="url" placeholder="http://127.0.0.1:7897" autocomplete="off"></label><label>自动刷新<select id="interval"><option value="30">每 30 秒</option><option value="60" selected>每 60 秒</option><option value="120">每 2 分钟</option><option value="300">每 5 分钟</option><option value="0">仅手动</option></select></label></div>
+      <label class="remember" hidden><input id="remember" type="checkbox"> 加密保存账户，下次自动加载</label>
+      <p class="hint">未勾选保存时，凭据仅在内存中。修改代理后请重新导入文件。</p>
+    </section>
+    <section class="toolbar"><div><span id="dot" class="dot"></span><span id="status" role="status" aria-live="polite">尚未连接账户</span><small id="updated"></small></div><div class="actions"><button id="refresh" disabled>↻ 刷新</button><button id="clear" class="quiet" disabled>清除账户</button></div></section>
+    <p id="error" class="error" role="alert" hidden></p>
+    <section id="cards" class="cards"><div class="panel empty"><span>◎</span><h2>额度将在这里显示</h2><p>导入后自动获取真实数据，包括剩余百分比与重置倒计时。</p></div></section>
+    <footer><p>数据来源：OpenAI Codex 额度接口。定时查询，非推送实时；失败时保留上次结果并标记为旧数据。</p><p>本工具不显示 ChatGPT 聊天模型剩余消息次数。接口可能随 OpenAI 更新而变化。</p><a href="https://learn.chatgpt.com/docs/auth" target="_blank" rel="noreferrer">如何获取 auth.json ↗</a></footer>
+  </main>
+</body>
+</html>
